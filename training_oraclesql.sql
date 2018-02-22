@@ -1,3 +1,4 @@
+```sql
 --selection all field
 select * from employees;
 
@@ -289,3 +290,4 @@ having avg(salary) > (select sum(salary) from employees where department_id=20)
 order by rata;
 
 select * from departments;
+```
