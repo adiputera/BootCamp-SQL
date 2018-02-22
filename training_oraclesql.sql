@@ -355,6 +355,17 @@ join employees e2
 on e1.manager_id=e2.employee_id
 order by Manager;
 
+--union -> untuk menggabungkan data, menampilkan data yang sama sekali, meski beda tabel, asal tipe field nya sama dan jumlah kolomnya sama
+select first_name, last_name from employees
+union
+select street_address, postal_code from locations;
+
+--union all -> menampilkan semua data, menampilkan semua data, meski kembar
+select first_name, last_name from employees
+union all
+select first_name, last_name from employees;
+
+
 --DDL
 --CREATE
 drop table department_137;
