@@ -288,4 +288,103 @@ group by dept.department_name
 having avg(salary) > (select sum(salary) from employees where department_id=20)
 order by rata;
 
-select * from departments;
+select
+    round(avg(salary), 2) as rata, dept.department_name
+from employees e
+inner join departments dept
+on e.department_id = dept.department_id
+group by department_name
+having sum(e.salary) > (select sum(e.salary)
+from employees e
+inner join departments dept
+on e.department_id = dept.department_id
+where dept.department_name='Marketing')
+order by rata;
+
+
+select
+    round(avg(salary), 2) as rata, dept.department_name
+from employees e, departments dept
+where e.department_id = dept.department_id
+group by department_name
+having sum(e.salary) > (select sum(e.salary)
+from employees e, departments dept
+where e.department_id = dept.department_id
+and dept.department_name='Marketing')
+order by rata;
+
+select * from employees;
+
+
+---menampilkan data karyawan dan managernya
+--self join
+select
+    e1.employee_id,
+    e1.first_name || ' ' || e1.last_name as Karyawan,
+    e1.email,
+    e2.first_name || ' ' || e2.last_name as Manager
+from employees e1
+join employees e2
+on e1.manager_id=e2.employee_id
+order by Manager;
+
+--DDL
+--CREATE
+drop table department_137;
+create table department_137(
+    id int primary key,
+    department_name varchar2(144),
+    email varchar2(144)
+);
+
+--menampilkan informasi tabel yang dibuat
+desc department_137;
+
+--constraint
+drop table department_137;
+create table department_137(
+    id int,
+    department_name varchar2(144),
+    email varchar2(144),
+    constraint cons_dept_pk primary key(id),
+    constraint cons_email_un unique(email)
+);
+
+---DML
+--insert
+insert into department_137 (id, department_name, email)
+values (1, 'infrastruktur', 'infra1@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (2, 'infrastruktur', 'infra2@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (3, 'infrastruktur', 'infra3@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (4, 'infrastruktur', 'infra4@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (5, 'infrastruktur', 'infra5@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (6, 'infrastruktur', 'infra6@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (7, 'infrastruktur', 'infra7@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (8, 'infrastruktur', 'infra8@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (9, 'infrastruktur', 'infra9@xsis.co.id');
+insert into department_137 (id, department_name, email)
+values (10, 'infrastruktur', 'infra10@xsis.co.id');
+
+select * from department_137;
+
+drop table employees_137;
+create table employees_137(
+    id int,
+    name varchar(144),
+    email varchar(144),
+    department_id int,
+    constraint cons_emp_pk primary key(id),
+    constraint cons_email_emp unique(email),
+    constraint cons_reff_dept foreign key(department_id)
+    REFERENCES department_137(id)
+);
+
+desc employees_137;
