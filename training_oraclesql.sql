@@ -388,3 +388,4 @@ create table employees_137(
 );
 
 desc employees_137;
+select * from departments;
