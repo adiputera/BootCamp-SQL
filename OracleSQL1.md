@@ -1,10 +1,10 @@
-#Latihan Oracle SQL Developer
-##Login SQLPLUS
+# Latihan Oracle SQL Developer
+## Login SQLPLUS
 ```sql
 sqlplus / as sysdba;
 ```
 
-##Mengaktifkan user HR yang masih terkunci, note : 1234 merupakan password yang dibuat untuk user HR
+## Mengaktifkan user HR yang masih terkunci, note : 1234 merupakan password yang dibuat untuk user HR
 ```sql
 SQL> alter user hr identified by 1234 account unlock;
 User altered.
@@ -15,12 +15,12 @@ USER is "HR"
 SQL>
 ```
 
-##selection all field
+## selection all field
 ```sql
 select * from employees;
 ```
 
-##selection field
+## selection field
 ```sql
 select
     employee_id as ID,
@@ -30,8 +30,8 @@ select
 from EMPLOYEES;
 ```
 
-##arithmatic expression
-##DUAL --> fungsi yang sudah ada pada oracle
+## arithmatic expression
+## DUAL --> fungsi yang sudah ada pada oracle
 ```sql
 select 'hello world' as kalimat from DUAL;
 
@@ -42,7 +42,7 @@ select 9-8 as pengurangan from dual;
 select 10+5*2 as perkalian from dual;
 ```sql
 
-##penambahan field bonus
+## penambahan field bonus
 ```sql
 select 
     first_name,
@@ -52,7 +52,7 @@ select
 from employees;
 ```
 
-##null field, null bukan 0, null+*9999 =null
+## null field, null bukan 0, null+*9999 =null
 ```sql
 select 
     first_name,
@@ -62,7 +62,7 @@ select
 from employees;
 ```
 
-##clause where
+## clause where
 ```sql
 select * from employees where employee_id=102;
 
@@ -71,7 +71,7 @@ select * from employees where first_name='lex'; -- case sensitive, nama Lex tida
 select * from employees where upper(first_name)=upper('lex'); -- diubah jadi huruf besar semua, lower untuk huruf kecil
 ```
 
-##komparasi
+## komparasi
 ```sql
 select first_name, last_name, salary from employees
 where salary =24000;
@@ -83,7 +83,7 @@ select first_name, last_name, salary from employees
 where salary <>24000; --tidak sama dengan, atau pakai !=
 ```
 
-##is null
+## is null
 ```sql
 select first_name, last_name, salary, COMMISSION_PCT from employees
 where commission_pct is null;
@@ -92,7 +92,7 @@ select first_name, last_name, salary, COMMISSION_PCT from employees
 where commission_pct is not null;
 ```
 
-##between
+## between
 ```sql
 select first_name, last_name, salary, COMMISSION_PCT from employees
 where salary between 10000 and 15000;
@@ -100,7 +100,7 @@ select first_name, last_name, salary, COMMISSION_PCT from employees
 where salary > 10000 and salary < 15000;
 ```
 
-##AND dan OR
+## AND dan OR
 ```sql
 select first_name, last_name, salary from employees
 where first_name='Lex' and salary=17000 or 1=0;
@@ -109,8 +109,8 @@ select first_name, last_name, salary from employees
 where salary=17000 or 1=0 and first_name='Lex';
 ```
 
-##order by
-###untuk mengurutkan berdasarkan field tertentu
+## order by
+### untuk mengurutkan berdasarkan field tertentu
 ```sql
 select*
 from employees
@@ -127,22 +127,22 @@ select * from employees
 order by 2;
 ```
 
-##ampersand 
-###untuk menambahkan variabel, jika belum didefinisikan akan berupa inputan, ditandai dengan tanda dan(&)
+## ampersand 
+### untuk menambahkan variabel, jika belum didefinisikan akan berupa inputan, ditandai dengan tanda dan(&)
 ```sql
 define theID = 123
 select * from employees where employee_id = &theID;
 undefine theID;
 ```
 
-#single  row function
+# single  row function
 
-##1.lower -> untuk merubah semua huruf menjadi huruf kecil
+## 1.lower -> untuk merubah semua huruf menjadi huruf kecil
 ```sql
 select lower('JKSAFfdfdASAD') from dual;
 ```
 
-##2.upper -> untuk merubah semuahuruf menjadi huruf besar
+## 2.upper -> untuk merubah semuahuruf menjadi huruf besar
 ```sql
 select upper('JKSAFfdfdASAD') from dual;
 define nama='Saya'
@@ -150,7 +150,7 @@ define nama2='nama'
 select upper('&nama' || ' ' || '&nama2') from dual;
 ```
 
-##3. initcap -> untuk membuat huruf awal tiap kata menjadi kapital, dan huruf selanjutnya kecil
+## 3. initcap -> untuk membuat huruf awal tiap kata menjadi kapital, dan huruf selanjutnya kecil
 ```sql
 define word = 'iNDONESIa'
 define word2 = 'jAYa'
@@ -161,8 +161,8 @@ select first_name, last_name, initcap(email) from employees order by email;
 select initcap(first_name || ' ' || last_name) as Nama_Lengkap from employees;
 ```
 
-##concat
-##untuk menyambung 2 string
+## concat
+## untuk menyambung 2 string
 ```sql
 define word1 = 'hello '
 define word2 = 'world'
@@ -171,28 +171,28 @@ select concat('&word1', '&word2') from dual;
 select 'hello' || ' ' || 'world' from dual;
 ```
 
-##trim menghilangkan spasi/karakter di depan dan belakang
+## trim menghilangkan spasi/karakter di depan dan belakang
 ```sql
 define word1 = '           halo         asdas    '
 select trim('&word1') from dual;
 ```
 
-##pembulatan bilangan
-##round -> pembulatan bilangan ke atas jika 0.5 ke atas
+## pembulatan bilangan
+## round -> pembulatan bilangan ke atas jika 0.5 ke atas
 ```sql
 select round(8.766,2) from dual;
 ```
 
-##trunc -> pembulatan bilangan  ke bawah
+## trunc -> pembulatan bilangan  ke bawah
 ```sql
 select trunc(5.6795, 2) from dual;
 ```
-##mod -> 2 mod 4
+## mod -> 2 mod 4
 ```sql
 select mod(2, 4) from dual;
 ```
 
-##date
+## date
 ```sql
 select sysdate from dual;
 

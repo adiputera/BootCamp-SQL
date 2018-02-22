@@ -1,46 +1,46 @@
-#ORACLE SQL
+# ORACLE SQL
 
-##group function
-###1.AVG -> rata-rata
+## group function
+### 1.AVG -> rata-rata
 ```sql
 select avg(salary) from employees;
 
 select round(avg(salary), 2) from employees;
 ```
-###2. SUM ->jumlah
+### 2. SUM ->jumlah
 ```sql
 select sum(salary) from employees;
 ```
 
-###3. MAX -> nilai maximum
+### 3. MAX -> nilai maximum
 ```sql
 select max(salary) from employees;
 ```
 
-##4. MIN -> nilai minimum
+## 4. MIN -> nilai minimum
 ```sql
 select min(salary) from employees;
 ```
 
-##5. count menghitung jumlah record
-###berdasarkan field
+## 5. count menghitung jumlah record
+### berdasarkan field
 ```sql
 select count(commission_pct) from employees; --ada null tidak dihitung
 ```
 
-###ngitung semua
+### ngitung semua
 ```sql
 select count(*) from employees;
 ```
 
-##6.STDDEV (Standar deviasi) dan variance -> statistika
+## 6.STDDEV (Standar deviasi) dan variance -> statistika
 ```sql
 select stddev(salary) from employees;
 
 select variance(salary) from employees;
 ```
 
-##contoh
+## contoh
 ```sql
 select
     count(*),
@@ -56,7 +56,7 @@ group by first_name
 order by max(salary) desc;
 ```
 
-##group by -> untuk menggrupkan pada field yang ditentukan
+## group by -> untuk menggrupkan pada field yang ditentukan
 ```sql
 select
     avg(salary) as rata2,
@@ -66,7 +66,7 @@ select
 from employees group by job_id order by 1;
 ```
 
-##having untuk memfilter hasil yang dihasilkan oleh group function(where untuk group function)
+## having untuk memfilter hasil yang dihasilkan oleh group function(where untuk group function)
 ```sql
 select
     avg(salary) as rata2,
@@ -77,7 +77,7 @@ from employees group by job_id
 having avg(salary) > 10000;
 ```
 
-##subquery -> query dalam query
+## subquery -> query dalam query
 ```sql
 select
     avg(salary) as rata2,
