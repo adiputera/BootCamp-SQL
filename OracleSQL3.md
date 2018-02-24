@@ -91,10 +91,10 @@ inner join departments dept
 on e.department_id = dept.department_id
 group by department_name
 having sum(e.salary) > (select sum(e.salary)
-							from employees e
-							inner join departments dept
-							on e.department_id = dept.department_id
-							where dept.department_name='Marketing')
+				from employees e
+				inner join departments dept
+				on e.department_id = dept.department_id
+				where dept.department_name='Marketing')
 order by rata;
 
 select
@@ -103,9 +103,9 @@ from employees e, departments dept
 where e.department_id = dept.department_id
 group by department_name
 having sum(e.salary) > (select sum(e.salary)
-							from employees e, departments dept
-							where e.department_id = dept.department_id
-							and dept.department_name='Marketing')
+				from employees e, departments dept
+				where e.department_id = dept.department_id
+				and dept.department_name='Marketing')
 order by rata;
 ```
 
