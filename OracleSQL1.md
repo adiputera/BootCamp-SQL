@@ -71,6 +71,43 @@ select * from employees where first_name='lex'; -- case sensitive, nama Lex tida
 select * from employees where upper(first_name)=upper('lex'); -- diubah jadi huruf besar semua, lower untuk huruf kecil
 ```
 
+## searching
+### 1. equals "="
+```sql
+select *
+from employees
+where
+first_name = 'William' and last_name='Smith';
+```
+
+## 2. in -> mirip OR
+```sql
+select* from employees where
+first_name = 'William' or first_name = 'Lex';
+
+select * from employees
+where first_name in('William', 'Lex');
+```
+
+## 3. like -> untuk mencari dengan karakter yang ditentukan, ditambah %
+mencari first name yang depannya huruf L
+```sql
+select * from employees
+where first_name like 'L%';
+```
+
+mencari first name yang diakhiri huruf l
+```sql
+select * from employees
+where first_name like '%l';
+```
+
+mencari first name yang mengandung huruf 'sa'
+```sql
+select * from employees
+where first_name like '%sa%';
+```
+
 ## komparasi
 ```sql
 select first_name, last_name, salary from employees
