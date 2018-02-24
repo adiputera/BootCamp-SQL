@@ -66,9 +66,11 @@ from employees;
 ```sql
 select * from employees where employee_id=102;
 
-select * from employees where first_name='lex'; -- case sensitive, nama Lex tidak tampil
+-- case sensitive, nama Lex tidak tampil
+select * from employees where first_name='lex'; 
 
-select * from employees where upper(first_name)=upper('lex'); -- diubah jadi huruf besar semua, lower untuk huruf kecil
+-- diubah jadi huruf besar semua, lower untuk huruf kecil
+select * from employees where upper(first_name)=upper('lex'); 
 ```
 
 ## searching
